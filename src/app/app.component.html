@@ -1,4 +1,22 @@
 <div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-auto">
+          <h2 class="card-title">Template Reference Variable</h2>
+          <input class="form-control" type="text" #sendRequest ngModel>
+          <button [disabled]="sendRequest.value.length ===0"
+            class="btn btn-success"
+            (click)="onRequestSend(sendRequest)">Send Request</button>
+        </div>
+        <div class="col-auto">
+          <h2 class="card-text">@ViewChild - Autofocus Example</h2>
+          <input class="form-control" type="text" #sendRequestViewChild ngModel>
+          <button class="btn btn-success">Send with Autofocus</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <app-parent></app-parent>
   <div class="card">
     <div class="card-body">

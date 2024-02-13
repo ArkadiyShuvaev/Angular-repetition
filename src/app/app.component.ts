@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiClientService } from "./api-client.service";
+import { ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { ApiClientService } from "./api-client.service";
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'MyApp';
   userName = 'Arkadiy';
   imagePath = 'favicon.ico';
@@ -16,8 +17,16 @@ export class AppComponent {
   inputNgSwitchValue = 0;
   attributeDirectiveColorNgClass = 'white';
   isStyleAppliedDirectiveColorNgStyle = false;
+  @ViewChild('sendRequestViewChild', {static: true}) inputWithAutofocus!: ElementRef<HTMLInputElement>;
 
   constructor(private apiClient: ApiClientService) { }
+  ngOnInit(): void {
+    this.inputWithAutofocus.nativeElement.focus();
+  }
+
+  onRequestSend(inputElem: HTMLInputElement) {
+    console.log(inputElem.value);
+  }
 
   onClickAttributeDirectiveWithClass(color: string) {
     this.attributeDirectiveColorNgClass = color;
